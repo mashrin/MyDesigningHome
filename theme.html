@@ -1,0 +1,1465 @@
+<!--
+AUTHOR : Y V Satya Sagar
+DATE : 20th November 2015
+CopyRight. IITM
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from ceaiitm.org/2016/main/theme.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jun 2016 17:57:54 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<script src="../../../ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<link rel="stylesheet" href="../../../maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="shortcut icon" href="img/cealogo.png">
+    <title>CEA '16 | Theme</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+    <link rel="stylesheet" href="css/hospitality.css" type="text/css">
+    <link rel="stylesheet" href="css/svg.css" type="text/css">
+    <link rel="stylesheet" href="events16/css/style.css" type="text/css">
+	<link rel="stylesheet" href="css/css/styles.css" type="text/css">
+		<script type="text/javascript">
+$(window).load(function()
+{
+	$('#pageload').modal('show');
+	var currentflightpos=0;
+	{$(".on-hover-content").hide();}
+
+        $('#pageload').on('hidden.bs.modal', function () {
+    // do something…
+        $(".on-hover-content").show();
+        //$("#logo122").fadeOut(4000);
+        //$("#logo123").fadeOut(4000);
+        
+         });
+function rotate(degrees,div,divrev)
+{
+	div.css(
+		{
+			'-webkit-transform' : 'rotate('+ degrees +'deg)',
+            '-moz-transform' : 'rotate('+ degrees +'deg)',
+            '-ms-transform' : 'rotate('+ degrees +'deg)',
+            'transform' : 'rotate('+ degrees +'deg)'
+        }
+        );
+	divrev.css(
+		{
+			'-webkit-transform' : 'rotate('+ degrees +'deg)',
+            '-moz-transform' : 'rotate('+ degrees +'deg)',
+            '-ms-transform' : 'rotate('+ degrees +'deg)',
+            'transform' : 'rotate('+ degrees +'deg)'
+        }
+        );
+	/*setTimeout(rotate(negdeg,div,divrev),2000);*/
+};
+
+function fly(destination,flightpos)
+  {
+	if(destination==0)
+	{
+		var div;
+		var divrev;
+		//have to place conditions here
+		if(currentflightpos==1)
+		{
+		var div1=$(".marker1");
+		}
+		else if(currentflightpos==2)
+		{
+		var div1=$(".marker2");
+		}
+		else if(currentflightpos==3)
+		{
+		var div1=$(".marker3");
+		}
+                else if(currentflightpos==4)
+		{
+		var div1=$(".marker4");
+		}
+                else if(currentflightpos==5)
+		{
+		var div1=$(".marker5");
+		}
+		else if(currentflightpos==6)
+		{
+		var div1=$(".marker6");
+		}
+		else if(currentflightpos==7)
+		{
+		var div1=$(".marker7");
+		}
+                else if(currentflightpos==8)
+		{
+		var div1=$(".marker8");
+		}
+                else if(currentflightpos==9)
+		{
+		var div1=$(".marker9");
+		}				
+		//destination city
+		var div2=$(".marker0");
+		//horizontal and vertical positions of the current city
+		var horposition1=div1.css('left').slice(0, -2);
+		var verposition1=div1.css('top').slice(0, -2);
+		//horizontal and vertical positions of the destination city
+		var horposition2=div2.css('left').slice(0, -2);
+		var verposition2=div2.css('top').slice(0, -2);
+		//checking if the movement is to the left or to the right
+		var horpos1=parseInt(horposition1);
+		var horpos2=parseInt(horposition2);
+		var verpos1=parseInt(verposition1);
+		var verpos2=parseInt(verposition2);
+		var slope=(verpos2-verpos1)/(horpos2-horpos1);
+		var angle;
+		var degreeangle;
+		if(horpos2-horpos1>0)
+		{
+		var div=$(".flight");
+		var divrev=$(".flightrev");
+		var angle = Math.atan(slope);
+		var degreeangle = angle*180/(Math.PI);
+		rotate(degreeangle,div,divrev);
+		}
+		else
+		{
+		var div=$(".flightrev");
+		var divrev=$(".flight");
+		var angle = Math.atan(slope);
+		var degreeangle = angle*180/(Math.PI);
+		rotate(degreeangle,div,divrev);
+		}
+		//getting the horizontal and vertical midpoint of the line joining the two cities
+		var hormidpoint=(parseInt(horposition1)+parseInt(horposition2))/2;
+		var vermidpoint=(parseInt(verposition1)+parseInt(verposition2))/2;
+		hormidpoint=hormidpoint.toString();
+		vermidpoint=vermidpoint.toString();
+		//animating and having a 3d effect by changing the width of the plane
+		/*if(!$(".flight").is(':animated'))//dont animate if lready animating
+		{*/
+			div.animate({left:hormidpoint,width:'2%',top:vermidpoint},1000,"linear");
+			setTimeout(function(){div.animate({left:horposition2,width:'0%',top:verposition2},1000,"linear");},1000);
+			divrev.animate({width:'0%'},100,"linear");
+			divrev.animate({left:hormidpoint,top:vermidpoint},1000,"linear");
+			setTimeout(function(){divrev.animate({left:horposition2,top:verposition2},1000,"linear");},1000);
+		/*}*/
+		//changing the current flight position
+		currentflightpos=0;
+	}
+	else if(destination==1)
+	{
+		var div;
+		var divrev;
+		//have to place conditions here
+		if(currentflightpos==0)
+		{
+		var div1=$(".marker0");
+		}
+		else if(currentflightpos==2)
+		{
+		var div1=$(".marker2");
+		}
+		else if(currentflightpos==3)
+		{
+		var div1=$(".marker3");
+		}
+                else if(currentflightpos==4)
+		{
+		var div1=$(".marker4");
+		}
+                else if(currentflightpos==5)
+		{
+		var div1=$(".marker5");
+		}
+		else if(currentflightpos==6)
+		{
+		var div1=$(".marker6");
+		}
+		else if(currentflightpos==7)
+		{
+		var div1=$(".marker7");
+		}
+                else if(currentflightpos==8)
+		{
+		var div1=$(".marker8");
+		}
+                else if(currentflightpos==9)
+		{
+		var div1=$(".marker9");
+		}						
+		//destination city
+		var div2=$(".marker1");
+		//horizontal and vertical positions of the current city
+		var horposition1=div1.css('left').slice(0, -2);
+		var verposition1=div1.css('top').slice(0, -2);
+		//horixontal and vertical positions of the destination city
+		var horposition2=div2.css('left').slice(0, -2);
+		var verposition2=div2.css('top').slice(0, -2);
+		//checking if the movement is to the left or to the right
+		var horpos1=parseInt(horposition1);
+		var horpos2=parseInt(horposition2);
+		var verpos1=parseInt(verposition1);
+		var verpos2=parseInt(verposition2);
+		var slope=(verpos2-verpos1)/(horpos2-horpos1);
+		var angle;
+		var degreeangle;
+		if(horpos2-horpos1>0)
+		{
+		var div=$(".flight");
+		var divrev=$(".flightrev");
+		var angle = Math.atan(slope);
+		var degreeangle = angle*180/(Math.PI);
+		rotate(degreeangle,div,divrev);
+		}
+		else
+		{
+		var div=$(".flightrev");
+		var divrev=$(".flight");
+		var angle = Math.atan(slope);
+		var degreeangle = angle*180/(Math.PI);
+		rotate(degreeangle,div,divrev);
+		}
+		//getting the horizontal and vertical midpoint of the line joining the two cities
+		var hormidpoint=(parseInt(horposition1)+parseInt(horposition2))/2;
+		var vermidpoint=(parseInt(verposition1)+parseInt(verposition2))/2;
+		hormidpoint=hormidpoint.toString();
+		vermidpoint=vermidpoint.toString();
+		//animating and having a 3d effect by changing the width of the plane
+		/*if(!$(".flight").is(':animated'))//dont animate if lready animating
+		{*/
+			div.animate({left:hormidpoint,width:'2%',top:vermidpoint},1000,"linear");
+			setTimeout(function(){div.animate({left:horposition2,width:'0%',top:verposition2},1000,"linear");},1000);
+			divrev.animate({width:'0%'},100,"linear");
+			divrev.animate({left:hormidpoint,top:vermidpoint},1000,"linear");
+			setTimeout(function(){divrev.animate({left:horposition2,top:verposition2},1000,"linear");},1000);
+			setTimeout(function()
+			{$("#myModal1").modal('show');},2000);
+		/*}*/
+		//changing the current flight position
+		currentflightpos=1;
+	}
+	else if(destination==2)
+	{
+		var div;
+		var divrev;
+		//have to place conditions here
+		if(currentflightpos==0)
+		{
+		var div1=$(".marker0");
+		}
+		else if(currentflightpos==1)
+		{
+		var div1=$(".marker1");
+		}
+		else if(currentflightpos==3)
+		{
+		var div1=$(".marker3");
+		}
+                else if(currentflightpos==4)
+		{
+		var div1=$(".marker4");
+		}
+                else if(currentflightpos==5)
+		{
+		var div1=$(".marker5");
+		}
+		else if(currentflightpos==6)
+		{
+		var div1=$(".marker6");
+		}
+		else if(currentflightpos==7)
+		{
+		var div1=$(".marker7");
+		}
+                else if(currentflightpos==8)
+		{
+		var div1=$(".marker8");
+		}
+                else if(currentflightpos==9)
+		{
+		var div1=$(".marker9");
+		}						
+		//destination city
+		var div2=$(".marker2");
+		//horizontal and vertical positions of the current city
+		var horposition1=div1.css('left').slice(0, -2);
+		var verposition1=div1.css('top').slice(0, -2);
+		//horixontal and vertical positions of the destination city
+		var horposition2=div2.css('left').slice(0, -2);
+		var verposition2=div2.css('top').slice(0, -2);
+		//checking if the movement is to the left or to the right
+		var horpos1=parseInt(horposition1);
+		var horpos2=parseInt(horposition2);
+		var verpos1=parseInt(verposition1);
+		var verpos2=parseInt(verposition2);
+		var slope=(verpos2-verpos1)/(horpos2-horpos1);
+		var angle;
+		var degreeangle;
+		if(horpos2-horpos1>0)
+		{
+		var div=$(".flight");
+		var divrev=$(".flightrev");
+		var angle = Math.atan(slope);
+		var degreeangle = angle*180/(Math.PI);
+		rotate(degreeangle,div,divrev);
+		}
+		else
+		{
+		var div=$(".flightrev");
+		var divrev=$(".flight");
+		var angle = Math.atan(slope);
+		var degreeangle = angle*180/(Math.PI);
+		rotate(degreeangle,div,divrev);
+		}
+		//getting the horizontal and vertical midpoint of the line joining the two cities
+		var hormidpoint=(parseInt(horposition1)+parseInt(horposition2))/2;
+		var vermidpoint=(parseInt(verposition1)+parseInt(verposition2))/2;
+		hormidpoint=hormidpoint.toString();
+		vermidpoint=vermidpoint.toString();
+		//animating and having a 3d effect by changing the width of the plane
+		/*if(!$(".flight").is(':animated'))//dont animate if already animating
+		{*/
+			div.animate({left:hormidpoint,width:'2%',top:vermidpoint},1000,"linear");
+			setTimeout(function(){div.animate({left:horposition2,width:'0%',top:verposition2},1000,"linear");},1000);
+			divrev.animate({width:'0%'},100,"linear");
+			divrev.animate({left:hormidpoint,top:vermidpoint},1000,"linear");
+			setTimeout(function(){divrev.animate({left:horposition2,top:verposition2},1000,"linear");},1000);
+			setTimeout(function()
+			{$("#myModal2").modal('show');},2000);
+		/*}*/
+		//changing the current flight position
+		currentflightpos=2;
+	}
+	else if(destination==3)
+	{
+		var div;
+		var divrev;
+		//have to place conditions here
+		if(currentflightpos==1)
+		{
+		var div1=$(".marker1");
+		}
+		else if(currentflightpos==2)
+		{
+		var div1=$(".marker2");
+		}
+		else if(currentflightpos==0)
+		{
+		var div1=$(".marker0");
+		}
+                else if(currentflightpos==4)
+		{
+		var div1=$(".marker4");
+		}
+                else if(currentflightpos==5)
+		{
+		var div1=$(".marker5");
+		}
+		else if(currentflightpos==6)
+		{
+		var div1=$(".marker6");
+		}
+		else if(currentflightpos==7)
+		{
+		var div1=$(".marker7");
+		}
+                else if(currentflightpos==8)
+		{
+		var div1=$(".marker8");
+		}		
+                else if(currentflightpos==9)
+		{
+		var div1=$(".marker9");
+		}				
+		//destination city
+		var div2=$(".marker3");
+		//horizontal and vertical positions of the current city
+		var horposition1=div1.css('left').slice(0, -2);
+		var verposition1=div1.css('top').slice(0, -2);
+		//horixontal and vertical positions of the destination city
+		var horposition2=div2.css('left').slice(0, -2);
+		var verposition2=div2.css('top').slice(0, -2);
+		//checking if the movement is to the left or to the right
+		var horpos1=parseInt(horposition1);
+		var horpos2=parseInt(horposition2);
+		var verpos1=parseInt(verposition1);
+		var verpos2=parseInt(verposition2);
+		var slope=(verpos2-verpos1)/(horpos2-horpos1);
+		var angle;
+		var degreeangle;
+		if(horpos2-horpos1>0)
+		{
+		var div=$(".flight");
+		var divrev=$(".flightrev");
+		var angle = Math.atan(slope);
+		var degreeangle = angle*180/(Math.PI);
+		rotate(degreeangle,div,divrev);
+		}
+		else
+		{
+		var div=$(".flightrev");
+		var divrev=$(".flight");
+		var angle = Math.atan(slope);
+		var degreeangle = angle*180/(Math.PI);
+		rotate(degreeangle,div,divrev);
+		}
+		//getting the horizontal and vertical midpoint of the line joining the two cities
+		var hormidpoint=(parseInt(horposition1)+parseInt(horposition2))/2;
+		var vermidpoint=(parseInt(verposition1)+parseInt(verposition2))/2;
+		hormidpoint=hormidpoint.toString();
+		vermidpoint=vermidpoint.toString();
+		//animating and having a 3d effect by changing the width of the plane
+		/*if(!$(".flight").is(':animated'))//dont animate if already animating
+		{*/
+			div.animate({left:hormidpoint,width:'2%',top:vermidpoint},1000,"linear");
+			setTimeout(function(){div.animate({left:horposition2,width:'0%',top:verposition2},1000,"linear");},1000);
+			divrev.animate({width:'0%'},100,"linear");
+			divrev.animate({left:hormidpoint,top:vermidpoint},1000,"linear");
+			setTimeout(function(){divrev.animate({left:horposition2,top:verposition2},1000,"linear");},1000);
+			setTimeout(function()
+			{$("#myModal3").modal('show');},2000);
+		/*}*/
+		//changing the current flight position
+		currentflightpos=3;
+	}
+        else if(destination==4)
+	{
+		var div;
+		var divrev;
+		//have to place conditions here
+		if(currentflightpos==1)
+		{
+		var div1=$(".marker1");
+		}
+		else if(currentflightpos==2)
+		{
+		var div1=$(".marker2");
+		}
+		else if(currentflightpos==3)
+		{
+		var div1=$(".marker3");
+		}
+                else if(currentflightpos==0)
+		{
+		var div1=$(".marker0");
+		}
+                else if(currentflightpos==5)
+		{
+		var div1=$(".marker5");
+		}
+		else if(currentflightpos==6)
+		{
+		var div1=$(".marker6");
+		}
+		else if(currentflightpos==7)
+		{
+		var div1=$(".marker7");
+		}
+                else if(currentflightpos==8)
+		{
+		var div1=$(".marker8");
+		}		
+                else if(currentflightpos==9)
+		{
+		var div1=$(".marker9");
+		}				
+		//destination city
+		var div2=$(".marker4");
+		//horizontal and vertical positions of the current city
+		var horposition1=div1.css('left').slice(0, -2);
+		var verposition1=div1.css('top').slice(0, -2);
+		//horixontal and vertical positions of the destination city
+		var horposition2=div2.css('left').slice(0, -2);
+		var verposition2=div2.css('top').slice(0, -2);
+		//checking if the movement is to the left or to the right
+		var horpos1=parseInt(horposition1);
+		var horpos2=parseInt(horposition2);
+		var verpos1=parseInt(verposition1);
+		var verpos2=parseInt(verposition2);
+		var slope=(verpos2-verpos1)/(horpos2-horpos1);
+		var angle;
+		var degreeangle;
+		if(horpos2-horpos1>0)
+		{
+		var div=$(".flight");
+		var divrev=$(".flightrev");
+		var angle = Math.atan(slope);
+		var degreeangle = angle*180/(Math.PI);
+		rotate(degreeangle,div,divrev);
+		}
+		else
+		{
+		var div=$(".flightrev");
+		var divrev=$(".flight");
+		var angle = Math.atan(slope);
+		var degreeangle = angle*180/(Math.PI);
+		rotate(degreeangle,div,divrev);
+		}
+		//getting the horizontal and vertical midpoint of the line joining the two cities
+		var hormidpoint=(parseInt(horposition1)+parseInt(horposition2))/2;
+		var vermidpoint=(parseInt(verposition1)+parseInt(verposition2))/2;
+		hormidpoint=hormidpoint.toString();
+		vermidpoint=vermidpoint.toString();
+		//animating and having a 3d effect by changing the width of the plane
+		/*if(!$(".flight").is(':animated'))//dont animate if lready animating
+		{*/
+			div.animate({left:hormidpoint,width:'2%',top:vermidpoint},1000,"linear");
+			setTimeout(function(){div.animate({left:horposition2,width:'0%',top:verposition2},1000,"linear");},1000);
+			divrev.animate({width:'0%'},100,"linear");
+			divrev.animate({left:hormidpoint,top:vermidpoint},1000,"linear");
+			setTimeout(function(){divrev.animate({left:horposition2,top:verposition2},1000,"linear");},1000);
+			setTimeout(function()
+			{$("#myModal4").modal('show');},2000);
+		/*}*/
+		//changing the current flight position
+		currentflightpos=4;
+	}
+        else if(destination==5)
+	{
+		var div;
+		var divrev;
+		//have to place conditions here
+		if(currentflightpos==1)
+		{
+		var div1=$(".marker1");
+		}
+		else if(currentflightpos==2)
+		{
+		var div1=$(".marker2");
+		}
+		else if(currentflightpos==3)
+		{
+		var div1=$(".marker3");
+		}
+                else if(currentflightpos==4)
+		{
+		var div1=$(".marker4");
+		}
+                else if(currentflightpos==0)
+		{
+		var div1=$(".marker0");
+		}
+		else if(currentflightpos==6)
+		{
+		var div1=$(".marker6");
+		}
+		else if(currentflightpos==7)
+		{
+		var div1=$(".marker7");
+		}
+                else if(currentflightpos==8)
+		{
+		var div1=$(".marker8");
+		}
+                else if(currentflightpos==9)
+                {
+                var div1=$(".marker9");
+                }		
+		//destination city
+		var div2=$(".marker5");
+		//horizontal and vertical positions of the current city
+		var horposition1=div1.css('left').slice(0, -2);
+		var verposition1=div1.css('top').slice(0, -2);
+		//horixontal and vertical positions of the destination city
+		var horposition2=div2.css('left').slice(0, -2);
+		var verposition2=div2.css('top').slice(0, -2);
+		//checking if the movement is to the left or to the right
+		var horpos1=parseInt(horposition1);
+		var horpos2=parseInt(horposition2);
+		var verpos1=parseInt(verposition1);
+		var verpos2=parseInt(verposition2);
+		var slope=(verpos2-verpos1)/(horpos2-horpos1);
+		var angle;
+		var degreeangle;
+		if(horpos2-horpos1>0)
+		{
+		var div=$(".flight");
+		var divrev=$(".flightrev");
+		var angle = Math.atan(slope);
+		var degreeangle = angle*180/(Math.PI);
+		rotate(degreeangle,div,divrev);
+		}
+		else
+		{
+		var div=$(".flightrev");
+		var divrev=$(".flight");
+		var angle = Math.atan(slope);
+		var degreeangle = angle*180/(Math.PI);
+		rotate(degreeangle,div,divrev);
+		}
+		//getting the horizontal and vertical midpoint of the line joining the two cities
+		var hormidpoint=(parseInt(horposition1)+parseInt(horposition2))/2;
+		var vermidpoint=(parseInt(verposition1)+parseInt(verposition2))/2;
+		hormidpoint=hormidpoint.toString();
+		vermidpoint=vermidpoint.toString();
+		//animating and having a 3d effect by changing the width of the plane
+		/*if(!$(".flight").is(':animated'))//dont animate if lready animating
+		{*/
+			div.animate({left:hormidpoint,width:'2%',top:vermidpoint},1000,"linear");
+			setTimeout(function(){div.animate({left:horposition2,width:'0%',top:verposition2},1000,"linear");},1000);
+			divrev.animate({width:'0%'},100,"linear");
+			divrev.animate({left:hormidpoint,top:vermidpoint},1000,"linear");
+			setTimeout(function(){divrev.animate({left:horposition2,top:verposition2},1000,"linear");},1000);
+			setTimeout(function()
+			{$("#myModal5").modal('show');},2000);
+		/*}*/
+		//changing the current flight position
+		currentflightpos=5;
+	}
+        else if(destination==6)
+	{
+		var div;
+		var divrev;
+		//have to place conditions here
+		if(currentflightpos==1)
+		{
+		var div1=$(".marker1");
+		}
+		else if(currentflightpos==2)
+		{
+		var div1=$(".marker2");
+		}
+		else if(currentflightpos==3)
+		{
+		var div1=$(".marker3");
+		}
+                else if(currentflightpos==4)
+		{
+		var div1=$(".marker4");
+		}
+                else if(currentflightpos==0)
+		{
+		var div1=$(".marker0");
+		}
+		else if(currentflightpos==5)
+		{
+		var div1=$(".marker5");
+		}
+		else if(currentflightpos==7)
+		{
+		var div1=$(".marker7");
+		}
+                else if(currentflightpos==8)
+		{
+		var div1=$(".marker8");
+		}
+                else if(currentflightpos==9)
+                {
+                var div1=$(".marker9");
+                }		
+		//destination city
+		var div2=$(".marker6");
+		//horizontal and vertical positions of the current city
+		var horposition1=div1.css('left').slice(0, -2);
+		var verposition1=div1.css('top').slice(0, -2);
+		//horixontal and vertical positions of the destination city
+		var horposition2=div2.css('left').slice(0, -2);
+		var verposition2=div2.css('top').slice(0, -2);
+		//checking if the movement is to the left or to the right
+		var horpos1=parseInt(horposition1);
+		var horpos2=parseInt(horposition2);
+		var verpos1=parseInt(verposition1);
+		var verpos2=parseInt(verposition2);
+		var slope=(verpos2-verpos1)/(horpos2-horpos1);
+		var angle;
+		var degreeangle;
+		if(horpos2-horpos1>0)
+		{
+		var div=$(".flight");
+		var divrev=$(".flightrev");
+		var angle = Math.atan(slope);
+		var degreeangle = angle*180/(Math.PI);
+		rotate(degreeangle,div,divrev);
+		}
+		else
+		{
+		var div=$(".flightrev");
+		var divrev=$(".flight");
+		var angle = Math.atan(slope);
+		var degreeangle = angle*180/(Math.PI);
+		rotate(degreeangle,div,divrev);
+		}
+		//getting the horizontal and vertical midpoint of the line joining the two cities
+		var hormidpoint=(parseInt(horposition1)+parseInt(horposition2))/2;
+		var vermidpoint=(parseInt(verposition1)+parseInt(verposition2))/2;
+		hormidpoint=hormidpoint.toString();
+		vermidpoint=vermidpoint.toString();
+		//animating and having a 3d effect by changing the width of the plane
+		/*if(!$(".flight").is(':animated'))//dont animate if lready animating
+		{*/
+			div.animate({left:hormidpoint,width:'2%',top:vermidpoint},1000,"linear");
+			setTimeout(function(){div.animate({left:horposition2,width:'0%',top:verposition2},1000,"linear");},1000);
+			divrev.animate({width:'0%'},100,"linear");
+			divrev.animate({left:hormidpoint,top:vermidpoint},1000,"linear");
+			setTimeout(function(){divrev.animate({left:horposition2,top:verposition2},1000,"linear");},1000);
+			setTimeout(function()
+			{$("#myModal6").modal('show');},2000);
+		/*}*/
+		//changing the current flight position
+		currentflightpos=6;
+	}
+        else if(destination==7)
+	{
+		var div;
+		var divrev;
+		//have to place conditions here
+		if(currentflightpos==1)
+		{
+		var div1=$(".marker1");
+		}
+		else if(currentflightpos==2)
+		{
+		var div1=$(".marker2");
+		}
+		else if(currentflightpos==3)
+		{
+		var div1=$(".marker3");
+		}
+                else if(currentflightpos==4)
+		{
+		var div1=$(".marker4");
+		}
+                else if(currentflightpos==0)
+		{
+		var div1=$(".marker0");
+		}
+		else if(currentflightpos==6)
+		{
+		var div1=$(".marker6");
+		}
+		else if(currentflightpos==5)
+		{
+		var div1=$(".marker5");
+		}
+                else if(currentflightpos==8)
+		{
+		var div1=$(".marker8");
+		}
+                else if(currentflightpos==9)
+                {
+                var div1=$(".marker9");
+                }		
+		//destination city
+		var div2=$(".marker7");
+		//horizontal and vertical positions of the current city
+		var horposition1=div1.css('left').slice(0, -2);
+		var verposition1=div1.css('top').slice(0, -2);
+		//horixontal and vertical positions of the destination city
+		var horposition2=div2.css('left').slice(0, -2);
+		var verposition2=div2.css('top').slice(0, -2);
+		//checking if the movement is to the left or to the right
+		var horpos1=parseInt(horposition1);
+		var horpos2=parseInt(horposition2);
+		var verpos1=parseInt(verposition1);
+		var verpos2=parseInt(verposition2);
+		var slope=(verpos2-verpos1)/(horpos2-horpos1);
+		var angle;
+		var degreeangle;
+		if(horpos2-horpos1>0)
+		{
+		var div=$(".flight");
+		var divrev=$(".flightrev");
+		var angle = Math.atan(slope);
+		var degreeangle = angle*180/(Math.PI);
+		rotate(degreeangle,div,divrev);
+		}
+		else
+		{
+		var div=$(".flightrev");
+		var divrev=$(".flight");
+		var angle = Math.atan(slope);
+		var degreeangle = angle*180/(Math.PI);
+		rotate(degreeangle,div,divrev);
+		}
+		//getting the horizontal and vertical midpoint of the line joining the two cities
+		var hormidpoint=(parseInt(horposition1)+parseInt(horposition2))/2;
+		var vermidpoint=(parseInt(verposition1)+parseInt(verposition2))/2;
+		hormidpoint=hormidpoint.toString();
+		vermidpoint=vermidpoint.toString();
+		//animating and having a 3d effect by changing the width of the plane
+		/*if(!$(".flight").is(':animated'))//dont animate if lready animating
+		{*/
+			div.animate({left:hormidpoint,width:'2%',top:vermidpoint},1000,"linear");
+			setTimeout(function(){div.animate({left:horposition2,width:'0%',top:verposition2},1000,"linear");},1000);
+			divrev.animate({width:'0%'},100,"linear");
+			divrev.animate({left:hormidpoint,top:vermidpoint},1000,"linear");
+			setTimeout(function(){divrev.animate({left:horposition2,top:verposition2},1000,"linear");},1000);
+			setTimeout(function()
+			{$("#myModal7").modal('show');},2000);
+		/*}*/
+		//changing the current flight position
+		currentflightpos=7;
+	}
+        	else if(destination==8)
+	{
+		var div;
+		var divrev;
+		//have to place conditions here
+		if(currentflightpos==1)
+		{
+		var div1=$(".marker1");
+		}
+		else if(currentflightpos==2)
+		{
+		var div1=$(".marker2");
+		}
+		else if(currentflightpos==3)
+		{
+		var div1=$(".marker3");
+		}
+                else if(currentflightpos==4)
+		{
+		var div1=$(".marker4");
+		}
+                else if(currentflightpos==0)
+		{
+		var div1=$(".marker0");
+		}
+		else if(currentflightpos==6)
+		{
+		var div1=$(".marker6");
+		}
+		else if(currentflightpos==7)
+		{
+		var div1=$(".marker7");
+		}
+                else if(currentflightpos==5)
+		{
+		var div1=$(".marker5");
+		}
+                else if(currentflightpos==9)
+                {
+                var div1=$(".marker9");
+                }		
+		//destination city
+		var div2=$(".marker8");
+		//horizontal and vertical positions of the current city
+		var horposition1=div1.css('left').slice(0, -2);
+		var verposition1=div1.css('top').slice(0, -2);
+		//horixontal and vertical positions of the destination city
+		var horposition2=div2.css('left').slice(0, -2);
+		var verposition2=div2.css('top').slice(0, -2);
+		//checking if the movement is to the left or to the right
+		var horpos1=parseInt(horposition1);
+		var horpos2=parseInt(horposition2);
+		var verpos1=parseInt(verposition1);
+		var verpos2=parseInt(verposition2);
+		var slope=(verpos2-verpos1)/(horpos2-horpos1);
+		var angle;
+		var degreeangle;
+		if(horpos2-horpos1>0)
+		{
+		var div=$(".flight");
+		var divrev=$(".flightrev");
+		var angle = Math.atan(slope);
+		var degreeangle = angle*180/(Math.PI);
+		rotate(degreeangle,div,divrev);
+		}
+		else
+		{
+		var div=$(".flightrev");
+		var divrev=$(".flight");
+		var angle = Math.atan(slope);
+		var degreeangle = angle*180/(Math.PI);
+		rotate(degreeangle,div,divrev);
+		}
+		//getting the horizontal and vertical midpoint of the line joining the two cities
+		var hormidpoint=(parseInt(horposition1)+parseInt(horposition2))/2;
+		var vermidpoint=(parseInt(verposition1)+parseInt(verposition2))/2;
+		hormidpoint=hormidpoint.toString();
+		vermidpoint=vermidpoint.toString();
+		//animating and having a 3d effect by changing the width of the plane
+		/*if(!$(".flight").is(':animated'))//dont animate if lready animating
+		{*/
+			div.animate({left:hormidpoint,width:'2%',top:vermidpoint},1000,"linear");
+			setTimeout(function(){div.animate({left:horposition2,width:'0%',top:verposition2},1000,"linear");},1000);
+			divrev.animate({width:'0%'},100,"linear");
+			divrev.animate({left:hormidpoint,top:vermidpoint},1000,"linear");
+			setTimeout(function(){divrev.animate({left:horposition2,top:verposition2},1000,"linear");},1000);
+			setTimeout(function()
+			{$("#myModal8").modal('show');},2000);
+		/*}*/
+		//changing the current flight position
+		currentflightpos=8;
+	}
+        	else if(destination==9)
+	{
+		var div;
+		var divrev;
+		//have to place conditions here
+		if(currentflightpos==1)
+		{
+		var div1=$(".marker1");
+		}
+		else if(currentflightpos==2)
+		{
+		var div1=$(".marker2");
+		}
+		else if(currentflightpos==3)
+		{
+		var div1=$(".marker3");
+		}
+                else if(currentflightpos==4)
+		{
+		var div1=$(".marker4");
+		}
+                else if(currentflightpos==0)
+		{
+		var div1=$(".marker0");
+		}
+		else if(currentflightpos==6)
+		{
+		var div1=$(".marker6");
+		}
+		else if(currentflightpos==7)
+		{
+		var div1=$(".marker7");
+		}
+                else if(currentflightpos==8)
+		{
+		var div1=$(".marker8");
+		}
+                else if(currentflightpos==5)
+                {
+                var div1=$(".marker5");
+                }		
+		//destination city
+		var div2=$(".marker9");
+		//horizontal and vertical positions of the current city
+		var horposition1=div1.css('left').slice(0, -2);
+		var verposition1=div1.css('top').slice(0, -2);
+		//horixontal and vertical positions of the destination city
+		var horposition2=div2.css('left').slice(0, -2);
+		var verposition2=div2.css('top').slice(0, -2);
+		//checking if the movement is to the left or to the right
+		var horpos1=parseInt(horposition1);
+		var horpos2=parseInt(horposition2);
+		var verpos1=parseInt(verposition1);
+		var verpos2=parseInt(verposition2);
+		var slope=(verpos2-verpos1)/(horpos2-horpos1);
+		var angle;
+		var degreeangle;
+		if(horpos2-horpos1>0)
+		{
+		var div=$(".flight");
+		var divrev=$(".flightrev");
+		var angle = Math.atan(slope);
+		var degreeangle = angle*180/(Math.PI);
+		rotate(degreeangle,div,divrev);
+		}
+		else
+		{
+		var div=$(".flightrev");
+		var divrev=$(".flight");
+		var angle = Math.atan(slope);
+		var degreeangle = angle*180/(Math.PI);
+		rotate(degreeangle,div,divrev);
+		}
+		//getting the horizontal and vertical midpoint of the line joining the two cities
+		var hormidpoint=(parseInt(horposition1)+parseInt(horposition2))/2;
+		var vermidpoint=(parseInt(verposition1)+parseInt(verposition2))/2;
+		hormidpoint=hormidpoint.toString();
+		vermidpoint=vermidpoint.toString();
+		//animating and having a 3d effect by changing the width of the plane
+		/*if(!$(".flight").is(':animated'))//dont animate if lready animating
+		{*/
+			div.animate({left:hormidpoint,width:'2%',top:vermidpoint},1000,"linear");
+			setTimeout(function(){div.animate({left:horposition2,width:'0%',top:verposition2},1000,"linear");},1000);
+			divrev.animate({width:'0%'},100,"linear");
+			divrev.animate({left:hormidpoint,top:vermidpoint},1000,"linear");
+			setTimeout(function(){divrev.animate({left:horposition2,top:verposition2},1000,"linear");},1000);
+			setTimeout(function()
+			{$("#myModal9").modal('show');},2000);
+		/*}*/
+		//changing the current flight position
+		currentflightpos=9;
+	}
+  }
+  //on click events and call the respective function
+	$(".marker0").click(function()
+	{
+		fly(0,currentflightpos);
+	});
+	$(".marker1").click(function()
+	{
+		fly(1,currentflightpos);
+	});
+	$(".marker2").click(function()
+	{
+		fly(2,currentflightpos);
+	});
+	$(".marker3").click(function()
+	{
+		fly(3,currentflightpos);
+	});
+        $(".marker4").click(function()
+	{
+		fly(4,currentflightpos);
+	});
+	$(".marker5").click(function()
+	{
+		fly(5,currentflightpos);
+	});
+	$(".marker6").click(function()
+	{
+		fly(6,currentflightpos);
+	});
+	$(".marker7").click(function()
+	{
+		fly(7,currentflightpos);
+	});
+	$(".marker8").click(function()
+	{
+		fly(8,currentflightpos);
+	});
+	$(".marker9").click(function()
+	{
+		fly(9,currentflightpos);
+	});
+});
+  </script>
+        <script>
+	$(window).load(function()
+	{
+		/*setTimeout(function(){
+			$('.socket').hide();
+			$('#page-top').animate({'opacity': 1},1000);
+		},3000);*/
+		setTimeout(function(){
+			$('.socket').hide();
+			$('#page-top').animate({'opacity': 1},1000);
+		},1000);
+	});
+	</script>
+</head>
+<body>
+<div class="socket">
+			<div class='Cube panelLoad' style="position:fixed;">
+  <div class='cube-face cube-face-front' style="color:white;">C</div>
+  <div class='cube-face cube-face-back' style="color:white;">C</div>
+  <div class='cube-face cube-face-left' style="color:white;">A</div>
+  <div class='cube-face cube-face-right' style="color:white;">A</div>  
+  <div class='cube-face cube-face-bottom' style="color:white;">E</div>
+  <div class='cube-face cube-face-top' style="color:white;">E</div>
+</div>
+		</div>
+<div id="page-top">
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top" id="nav">
+        <div class="container-fluid">
+            <div class="navbar-header">
+				<a class="navbar-brand page-scroll not-desktop" href="#page-top"><p id="head"><img src="img/cealogo.png"/></p></a>
+                <a class="navbar-brand page-scroll desktop" href="#page-top"><p id="head"><img src="img/cealogo.png"/></p>
+				</a>
+            </div>
+			<div class="div1" onclick="cross();unloadscrollbars();">
+			<div class="div2">
+				<p id="text" style="color:black;font-weight:700;font-size:24px;">Menu</p>
+			</div>
+			<div class="div3">
+				<div>
+					<a class="icons-bar" id="top"></a>
+				</div>
+				<div>
+					<a class="icons-bar" id="middle"></a>
+				</div>
+				<div>
+					<a class="icons-bar" id="bottom"></a>
+				</div>
+			</div>
+			</div>
+			<div class="row" style="display:none;">
+			<div onclick="window.location='#close';cross();reloadscrollbars();">
+				<div style="float:right" id="menu_close" >
+					
+					<div style="padding: 5px;">
+						<a class="icons-bar" id="top2"></a>
+					</div>
+					<div style="padding: 5px;">
+						<a class="icons-bar" id="middle2"></a>
+					</div>
+					<div style="padding: 5px;">
+						<a class="icons-bar" id="bottom2"></a>
+					</div>
+	
+				</div>
+			</div>
+			</div>
+			<div id="exp1">
+				<a href="index-2.html" style="text-decoration:none;"><div class="menu1"><p class="text-vertical-center"><span class="link-1">Home</span></p></div></a>
+				<a href="theme.html" style="text-decoration:none;"><div class="menu2 activetab"><p class="text-vertical-center"><span class="link-1">Theme</span></p></div></a>
+				<a href="events.html" style="text-decoration:none;"><div class="menu3"><p class="text-vertical-center"><span class="link-1">Events</span></p></div></a>
+				<a href="workshops.html" style="text-decoration:none;"><div class="menu4"><p class="text-vertical-center"><span class="link-1">Workshops</span></p></div></a>
+			</div>
+			<div id="exp2">
+				<a href="sponsors.html" style="text-decoration:none;"><div class="menu1"><p class="text-vertical-center"><span class="link-1">Sponsors</span></p></div></a>
+				<a href="contactus.html" style="text-decoration:none;"><div class="menu2"><p class="text-vertical-center"><span class="link-1">Contact Us</span></p></div></a>
+				<a href="researchexpo.html" style="text-decoration:none;"><div class="menu3"><p class="text-vertical-center"><span class="link-1">Research Expo</span></p></div></a>
+				<a href="profile/register.html" style="text-decoration:none;"><div class="menu4"><p class="text-vertical-center"><span class="link-1">Login/Register</span></p></div></a>
+			</div>
+        </div>
+		<style>
+		.menu1 p, .menu2 p, .menu3 p, .menu4 p
+		{
+		font-size:34px;
+		}
+		@media (max-width:768px)
+		{
+.menu1 p, .menu2 p, .menu3 p, .menu4 p
+		{
+		font-size:24px;
+		}
+		}
+		</style>
+    </nav>
+    <header>
+		 <div class="combined">
+<div class="world"><img src="img/world2.png" class="img-responsive" width="100%" height="100%"></div>
+<div class="marker1"><a class="link1" style="cursor: pointer;"><img src="img/marker.png" class="img-responsive"></a>
+</div>
+<div class="marker2"><a class="link2" style="cursor: pointer;"><img src="img/marker.png" class="img-responsive"  ></a>
+</div>
+<div class="marker3"><a class="link3" style="cursor: pointer;"><img src="img/marker.png" class="img-responsive"  ></a>
+</div>
+<div class="marker4"><a class="link4" style="cursor: pointer;"><img src="img/marker.png" class="img-responsive"  ></a>
+</div>
+<div class="marker5"><a class="link5" style="cursor: pointer;"><img src="img/marker.png" class="img-responsive"  ></a>
+</div>
+<div class="marker6"><a class="link6" style="cursor: pointer;"><img src="img/marker.png" class="img-responsive"  ></a>
+</div>
+<div class="marker7"><a class="link7" style="cursor: pointer;"><img src="img/marker.png" class="img-responsive"  ></a>
+</div>
+<div class="marker8"><a class="link8" style="cursor: pointer;"><img src="img/marker.png" class="img-responsive"  ></a>
+</div>
+<div class="marker9"><a class="link9" style="cursor: pointer;"><img src="img/marker.png" class="img-responsive"  ></a>
+</div>
+
+<div class="marker0"><div class="on-hover-content"><div id="logodiv"><img id="logoimg" src="img/cealogo.png"></div>We are here.Click on a place to go there</div><a class="link2" style="cursor: pointer;"><img src="img/marker.png" class="img-responsive"></a>
+</div>
+<div class="flight"><img id="flight" src="img/images.png" class="img-responsive"></div>
+<div class="flightrev"><img id="flight1" src="img/images1.png" class="img-responsive"></div>
+</div>
+<div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Panama Canal</h3>
+        </div>
+        <div class="modal-body">
+          <img class="taj" src="img/panama-canal-panama.jpg" >
+    <strong><P>Time to build: 11 years</p>
+    <p>Cost to build: $5.25 billion</p></strong>
+
+<p>The Panama Canal is so 1914. That's why the expansion project, set to complete in 2016, will carve out a new 3.8-mile-long channel for new locks—which require 4.4 million cubic meters of concrete—and widen and deepen what is already there. Ships have grown a lot over the past century, and so the world's most famous canal must do the same to keep pace, even if that does mean whittling away more of Panama.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+</div>
+<div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Three Gorges Dam</h3>
+        </div>
+        <div class="modal-body">
+          <img class="taj" src="img/three-gorges-dam-china.jpg">
+<strong><p>Time to build: 17 years</p>
+<p>Cost to build: $22 billion</p></strong>
+
+<p>We can't even comprehend the amount of concrete needed to construct the world's largest dam. Standing on China's Yangtze River, this 17-year, $59 billion project measures 595 feet tall, 131 feet wide, and more than 7,600 feet long, with 32 main turbines producing electricity.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+</div>
+<div class="modal fade" id="myModal3" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Al Maktoum International Airport</h4>
+        </div>
+        <div class="modal-body">
+          <img class="taj" src="img/al-maktoum-international-airport-dubaial-maktoum-international-airport-dubai.jpg">
+          <p><strong>Time to build: Estimated: 20 years</p>
+          <p>Cost to build: $31 billion</p></strong>
+
+<P>The original opening in 2010 was never meant to be the final word on the new airport for Dubai. Al Maktoum will receive a $32 billion expansion set to last up to eight years that will allow for 220 million passengers per year to fly out of the desert. The shear scope of an airport spread over 21 square miles will accommodate 100 Airbus A380 aircrafts at any given time.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+     </div>
+      
+    </div>
+</div>
+
+<div class="modal fade" id="myModal4" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Hong Kong-Zhuhai-Macao Bridge</h3>
+        </div>
+        <div class="modal-body">
+          <img class="taj" src="img/hong-kong-zhuhai-macao-bridge-china.jpg">
+<p><strong>Time to build: 7 years</p>
+<p>Cost to build: $10.6 billion</p></strong>
+
+<p>The incredible scope of this mega-infrastructure project includes a 16-mile bridge-to-tunnel structure, with the tunnel portion spanning about four miles. Two artificial islands for the tunnel landings will help engineers create both the tunnel section and anchor the bridge portions, which will connect Hong Kong and the mainland via a mega-crossing.</P>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+</div>
+
+
+<div class="modal fade" id="myModal5" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">London Crossrail</h3>
+        </div>
+        <div class="modal-body">
+          <img class="taj" src="img/london-crossrail-london.jpg">
+<strong><p>Time to build: 11 years</p>
+<p>Cost to build: $23 billion</p></strong>
+
+<p>London continues to grow underground. Eight tunneling machines recently wrapped up 26 new miles of tunnel for new subway track that will connect 40 stations—including 10 completely new ones—to improve transportation in England's largest city.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+</div>
+
+<div class="modal fade" id="myModal6" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Russky Bridge</h3>
+        </div>
+        <div class="modal-body">
+          <img class="taj" src="img/russky-bridge-russia.jpg">
+<strong><p>Time to build: 4 years</p>
+<p>Cost to build: $1 billion</p></strong>
+
+<p>At a total length of over 10,000 feet, the $1 billion Russky Bridge in southwestern Russia became the world's longest cable-stayed bridge when it opened in 2012. The 168 cable stays from its towers support the load of the bridge, and pylons standing more than 1,000 feet high anchor the cables. Just the middle channel of this three-segment bridge is about the length of the Golden Gate Bridge. The longest cables stretch nearly 2,000 feet.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+</div>
+
+
+<div class="modal fade" id="myModal7" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Bay Bridge Eastern Span</h3>
+        </div>
+        <div class="modal-body">
+          <img class="taj" src="img/bay-bridge-eastern-span-san-francisco-oakland.jpg">
+<strong><p>Time to build: 12 years</P>
+<p>Cost to build: $6.4 billion</p></strong>
+
+<p>The world's longest self-anchored suspension bridge, thanks to its 2,047-foot main span, is also the world's widest bridge. A single 2.6-foot-diameter main cable loops around the roadway, held aloft on a 525-foot tower that supports 90 percent of the bridge's weight.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+</div>
+
+<div class="modal fade" id="myModal8" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Sydney Opera House</h3>
+        </div>
+        <div class="modal-body">
+          <img class="taj" src="img/sydney_opera_house.jpg">
+<strong><p>Time to build: 14 years</p>
+<p>Cost to build: $102 million</p></strong>
+
+<p>The Sydney Opera House is a multi-venue performing arts centre in Sydney, Australia, identified as one of the 20th century's most distinctive buildings. The Sydney Opera House became a UNESCO World Heritage Site on 28 June 2007. As one of the most popular visitor attractions in Australia, more than eight million people visit the site each year, with around 350,000 visitors annually taking a guided tour of the building.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+</div>
+
+<div class="modal fade" id="myModal9" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Three Gorges Dam</h3>
+        </div>
+        <div class="modal-body">
+          <img class="taj" src="img/three-gorges-dam-china.jpg">
+<strong><p>Time to build: 17 years</p>
+<p>Cost to build: $22 billion</p></strong>
+
+<p>We can't even comprehend the amount of concrete needed to construct the world's largest dam. Standing on China's Yangtze River, this 17-year, $59 billion project measures 595 feet tall, 131 feet wide, and more than 7,600 feet long, with 32 main turbines producing electricity.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+</div>
+<div class="modal fade" id="pageload" role="dialog">
+    <div class="modal-dialog" id="pageloaddialog"> 
+    
+      <!-- Modal content-->
+      <div class="modal-content" id="pageloadmodal" style="background-color:ivory;">
+        
+        <div class="modal-header">
+          <button type="button" class="close" id="closebutton1" data-dismiss="modal">&times;</button>	
+                    <h2 class="section-heading"><center>THEME</center></h2>
+                    <hr><br>
+        </div>
+        <div class="modal-body">
+          	<h3 class="section1heading"><center>Introduction</center></h3><p>
+			Any government, be it India or any other country, keeps focusing on “Infrastructure” in all its long term plans. Infrastructure is the backbone of overall growth and development of a country. A well planned infrastructure shows how elegant and economically well satisfied the country is. The main agenda of any political organisation is developing their nation’s infrastructure. So to instil the dire-need or awareness of Modern Infrastructure among the young minds of the country, this year CEA Fest is back with an inspiring and thought provoking theme, “Modern Infrastructure”.</p><br />
+			<h3 class="section1heading"><center>What is Infrastructure??</center></h3>
+			<p>Infrastructure can be thought as the basic physical and organizational structures which are required for the proper operation of society or enterprise, also it can be thought of as the services and facilities necessary for an economy to function smoothly. A well-knit and coordinated system of transport plays an important role in the sustained economic growth of a country. Thus infrastructure can be regarded as one of the major requirements for sustainable development of an economy. It also helps a nation develop a stature in today’s world where globalization is the buzzword. Infrastructure has a significant impact on  reduction of poverty. </p><br />
+			<h3 class="section1heading"><center>Role of Civil Engineers</center></h3>
+			<p>All this is well and good but who will make this happen? The answer is ourselves, we Civil Engineers are the ones who can take this responsibility on our shoulders and start to build and create using our innovation and imagination. After all this is what civil engineers are trained to do and CEA fest helps us in realising its importance. India is in shortage of efficient civil engineers at present for all the upcoming projects. Modern as well as efficient method of building and intelligent use of materials is required and this is where the civil engineers prove their mettle. CEA fest is designed in such a way as to test these abilities and hone their skills. In the end the responsibility of implementing the physical and structural aspects of the infrastructure is on civil engineers.</p></br>
+			<h3 class="section1heading"><center>Why this Theme??</center></h3>
+			<p>CEA fest believes in bringing the best out of budding civil engineers and increase their knowledge in tackling problems at the root level caused by lack of proper infrastructure. The theme” Modern Infrastructure” evokes a sense of clear cut goal in the minds of civil engineers. This fest is a platform to test the ability and ideas of students in building infrastructure that meets the demands of the people and to improve Nation’s  economic stability. Therefore, CEA fest conducts various events and the activities focusing on this theme that enhances awareness of students throughout the year for a better structured India. </p><br />     
+       </div>
+        <div class="modal-footer">
+          <button type="button" id="closebutton2" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+     </div>
+      
+    </div>
+</div>
+    </header>
+	<footer id="foot">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="index-2.html" style="text-decoration:none;color:black;"><span class="copyright">Home</span></a><br/>
+ <a href="theme.html" style="text-decoration:none;color:black;"><span class="copyright">Theme</span></a><br/>
+                    <a href="events.html" style="text-decoration:none;color:black;"><span class="copyright">Events</span></a><br/>
+                    <a href="workshops.html" style="text-decoration:none;color:black;"><span class="copyright">Workshops</span></a><br/>
+                    <a href="sponsors.html" style="text-decoration:none;color:black;"><span class="copyright">Sponsors</span></a><br/>
+                    <a href="researchexpo.html" style="text-decoration:none;color:black;"><span class="copyright">Research Expo</span></a><br/>
+                </div>
+                <div class="col-md-4">
+                    <img src="img/cealogo.png" style="width:40%;height:40%;"/><br/>
+					<a href="profile/register.html" style="text-decoration:none;color:black;"><span class="copyright">Login/Register</span></a>
+                </div>
+                <div class="col-md-4">
+                   <ul class="list-inline social-buttons">
+                        <li id="twitter"><a target="_blank" href="https://twitter.com/CEA_Fest_IITM" id="twit"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a target="_blank" href="https://www.facebook.com/ceaiitm" id="face"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a target="_blank" href="https://www.youtube.com/channel/UCB6WxnHloUrulRgfWoXYYIA" id="you"><i class="fa fa-youtube"></i></a>
+                        </li>
+						<li><a target="_blank" href="https://play.google.com/store/apps/details?id=com.ceafest.ankitk97.testsite" id="and"><i class="fa fa-android"></i></a>
+                        </li>
+                    </ul>
+					<br/>
+					<a href="aboutus.html" style="text-decoration:none;color:black;"><span class="copyright">About Us</span><br/></a>
+<a href="schedule.html" style="text-decoration:none;color:black;"><span class="copyright">Schedule</span><br/></a>
+					<a href="contactus.html" style="text-decoration:none;color:black;"><span class="copyright">Contact Us</span><br/></a>
+					<span class="copyright">Copyright &copy; CEA WebOps 2016</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+  <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/jquery.fittext.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/index.js"></script>
+<script>
+var clicked = 0;
+function cross(){
+	if(clicked==0){
+		document.getElementById("top").id="top1";
+		document.getElementById("middle").id="middle1";
+		document.getElementById("bottom").id="bottom1";
+		document.getElementById("top2").id="top3";
+		document.getElementById("middle2").id="middle3";
+		document.getElementById("bottom2").id="bottom3";
+		clicked=1;
+		document.getElementById("text").innerHTML="Close";
+		document.getElementById("exp1").style.display="block";
+		document.getElementById("exp2").style.display="block";
+	}
+	else{
+		document.getElementById("top1").id="top";
+		document.getElementById("middle1").id="middle";
+		document.getElementById("bottom1").id="bottom";
+		document.getElementById("top3").id="top2";
+		document.getElementById("middle3").id="middle2";
+		document.getElementById("bottom3").id="bottom2";
+		clicked=0;
+		document.getElementById("text").innerHTML="Menu";
+		document.getElementById("exp1").style.display="none";
+		document.getElementById("exp2").style.display="none";
+	}
+}
+</script>
+</body>
+
+<!-- Mirrored from ceaiitm.org/2016/main/theme.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jun 2016 17:59:22 GMT -->
+</html>
